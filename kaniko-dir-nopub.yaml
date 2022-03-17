@@ -10,6 +10,6 @@ spec:
     image: gcr.io/kaniko-project/executor:debug
     args: ["--dockerfile=~/dev/devops/kubernetes/kaniko-demo/Dockerfile",
             "--context=dir:~/dev/devops/kubernetes/kaniko-demo",
-            "--no-publish"]
+            "--no-push"]
   restartPolicy: Never
 

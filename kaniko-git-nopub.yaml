@@ -9,6 +9,6 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
     args: ["--context=git://github.com/craigeebach/kaniko-demo",
-            "--no-publish"]
+            "--no-push"]
   restartPolicy: Never
 
