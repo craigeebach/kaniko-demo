@@ -9,6 +9,7 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
     args: ["--dockerfile=~/dev/devops/kubernetes/kaniko-demo/Dockerfile",
-            "--context=dir:~/dev/devops/kubernetes/kaniko-demo"]
+            "--context=dir:~/dev/devops/kubernetes/kaniko-demo",
+            "--no-publish"]
   restartPolicy: Never
 

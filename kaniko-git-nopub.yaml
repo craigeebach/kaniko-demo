@@ -8,6 +8,7 @@ spec:
   containers:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
-    args: ["--context=git://github.com/craigeebach/kaniko-demo"]
+    args: ["--context=git://github.com/craigeebach/kaniko-demo",
+            "--no-publish"]
   restartPolicy: Never
 
