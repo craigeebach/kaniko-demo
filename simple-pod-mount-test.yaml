@@ -1,0 +1,20 @@
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-mt
+spec:
+  containers:
+  - name: ubuntu-mt
+    image: ubuntu
+    args: ["sleep", "infinity"]
+    volumeMounts:
+      - name: host-mount
+        mountPath: /workspace
+  restartPolicy: Never
+  volumes:
+    - name: host-mount
+      hostPath:
+        path: /host
+

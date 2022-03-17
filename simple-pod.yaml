@@ -1,0 +1,15 @@
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu
+    # args: ["/bin/bash", "-c", "echo hello"]
+    # args: ["/bin/bash"]
+    args: ["sleep", "10000"]
+  restartPolicy: Never
+

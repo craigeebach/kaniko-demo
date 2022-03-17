@@ -8,8 +8,16 @@ spec:
   containers:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
-    args: ["--dockerfile=~/dev/devops/kubernetes/kaniko-demo/Dockerfile",
-            "--context=dir:~/dev/devops/kubernetes/kaniko-demo",
+    args: ["--dockerfile=/workspace/dev/devops/kubernetes/kaniko-demo/Dockerfile",
+            "--context=dir://workspace",
             "--no-push"]
+    volumeMounts:
+      - name: host-mount
+        mountPath: /workspace
   restartPolicy: Never
+  volumes:
+    - name: host-mount
+      hostPath:
+        path: /host
+
 
