@@ -9,13 +9,16 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
     args: ["--dockerfile=/workspace/Dockerfile",
-            "--context=dir://workspace",
+            "--context=dir:///workspace",
             "--destination=vfarcic/devops-toolkit:1.0.0"]
     volumeMounts:
       - name: kaniko-secret
         mountPath: /kaniko/.docker
   restartPolicy: Never
   volumes:
+    - name: host-mount
+      hostPath:
+        path: /host/dev/devops/kubernetes/kaniko-demo
     - name: kaniko-secret
       secret:
         secretName: regcred

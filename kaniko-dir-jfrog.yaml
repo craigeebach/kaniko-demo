@@ -10,15 +10,21 @@ spec:
     image: gcr.io/kaniko-project/executor:debug
     args: ["--dockerfile=/workspace/Dockerfile",
             "--context=dir:///workspace",
-            "--no-push"]
+            "--destination=craigeebach.jfrog.io/default-docker-local/vfarcic/devops-toolkit:1.0.0"]
     volumeMounts:
       - name: host-mount
         mountPath: /workspace
+      - name: kaniko-secret
+        mountPath: /kaniko/.docker
   restartPolicy: Never
   volumes:
     - name: host-mount
       hostPath:
         path: /host/dev/devops/kubernetes/kaniko-demo
-
-
+    - name: kaniko-secret
+      secret:
+        secretName: jfcred
+        items:
+          - key: .dockerconfigjson
+            path: config.json
 
